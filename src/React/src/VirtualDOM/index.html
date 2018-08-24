@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module">
+        import Element from './element.js';
+        let ul = Element('ul', { id: 'list' }, [
+                Element('li', { class: 'item' }, ['Item 1']),
+                Element('li', { class: 'item' }, ['Item 2']),
+                Element('li', { class: 'item' }, ['Item 3'])
+            ]);
+
+        document.getElementById('root').appendChild(ul.render());
+
+    </script>
+</body>
+</html>
