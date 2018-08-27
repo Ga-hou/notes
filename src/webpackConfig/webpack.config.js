@@ -22,8 +22,8 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    'style-loader',//style-loader将它插入到页面中
+                    'css-loader'//css-loader用于读取并加载css文件
                 ]
             },
             {
@@ -35,7 +35,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'APP',
-            template: './public/index.html'
+            template: './public/index.html',
+            favicon: './public/favicon.ico',
+            minify: {
+                removeComments: false, // 删除注释
+                collapseWhitespace: false // 删除空格
+            }
         })
     ]
 }
