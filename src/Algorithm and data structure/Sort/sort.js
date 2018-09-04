@@ -145,6 +145,38 @@ function ArrayList(){
         }
         return i;
     }
+
+    // 堆排序
+    this.heapSort = function(){
+        let length = array.length;
+        for(let i = length/2; i >= 0; i--){
+            heapAdjust(array,i,length);
+        }
+        for(let i = length - 1; i > 0; i--){
+            swap(array,0,i);
+            heapAdjust(array,0,i);
+        }
+    }
+
+    function heapAdjust(arr,pos, len){
+        let temp = arr[pos];
+        let child = 2*pos + 1;
+        
+        while(child < len){
+            if(child + 1 < len && arr[child] < arr[child-1]){
+                child++;
+            }
+            if(arr[pos] < arr[child]){
+                arr[pos] = arr[child];
+                pos = child;
+                child = 2*pos + 1;
+            }
+            else{
+                break;
+            }
+            arr[pos] = temp;
+        }
+    }
 }
 
 
@@ -158,5 +190,5 @@ function createNonSortedArray(size){
 
 let array = createNonSortedArray(10);
 console.log(array.toString());
-array.quickSort()
+array.heapSort()
 console.log(array.toString());
