@@ -50,4 +50,38 @@ diff策略
 - 建议，在开发组件时，保持稳定的 DOM 结构会有助于性能的提升；
 
 - 建议，在开发过程中，尽量减少类似将最后一个节点移动到列表首部的操作，当节点数量过大或更新操作过于频繁时，在一定程度上会影响 React 的渲染性能。
+
+
 ## React16 fiber
+
+## React16.3 生命周期函数
+
+为下面三个生命周期函数加上了UNSAFE标记
+
+- UNSAFE_componentWillMount
+
+- UNSAFE_componentWillUnmount
+
+- UNSAFE_componentWillUpdate
+
+新增两个声明周期函数
+
+- static getDerivedStateFromProps
+
+- getSnapshotBeforeUpdate
+
+### 新生命周期函数: static getDerivedStateFromProps
+
+    class App extends React.Component {
+        static getDerivedStateFromProps(props,state){}
+    }
+
+React在实例化组件之后以及重新渲染组件之前, 将调用新的 static getDerivedStateFromProps 生命周期方法. 该方法类似于componentWillReceiveProps, 可以控制props更新state的过程. `它返回一个对象表示新的state. 如果不需要更新组件, 返回null即可`
+
+### getSnapshotBeforeUpdate
+
+    class App extends React.Component {
+        getSnapshotBeforeUpdate(prevProps, prevState){}
+    }
+
+在React对视图做出实际改动(如DOM更新)发生前被调, 返回值将作为componentDidUpdate的第三个参数
