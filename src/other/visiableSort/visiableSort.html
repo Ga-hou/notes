@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>排序可视化</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="./src/bootstrap.min.css">
     <style>
         * {
             padding: 0;
@@ -26,11 +25,46 @@
     </style>
 </head>
 <body>
-    <div id="root" class="">
-        <h1>冒泡排序</h1>
-        <canvas id="canvas"></canvas>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active">
+                        冒泡排序
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">插入排序</a>
+                    <a href="#" class="list-group-item list-group-item-action">选择排序</a>
+                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-info btn-lg" id="build">生成</button>
+                    <button class="btn btn-primary btn-lg" id="start">开始</button>
+                    <button class="btn btn-warning btn-lg" id="pause">暂停</button>
+                    
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-success btn-lg" id="single">单步开始</button>
+                    <button class="btn btn-danger btn-lg" id="stop">停止</button>
+                </div>
+                <form class="form-inline mt-2">
+                    <div class="form-group">
+                        <input type="text" name="" id="length" class="form-control" placeholder="数组长度(默认10)">
+                    </div>
+                </form>
+                <select class="custom-select mt-2">
+                    <option selected value="">排序速度(默认)</option>
+                    <option value="1">慢</option>
+                    <option value="2">中</option>
+                    <option value="3">快</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <h1>冒泡排序</h1>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
     </div>
-    <script src="./dist/main.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>

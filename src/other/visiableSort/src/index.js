@@ -4,27 +4,73 @@ canvas.width = document.documentElement.clientWidth / 2;
 canvas.height = document.documentElement.clientHeight / 2;
 
 
-let time = 1, speed = 12, size = 10;
-let rectArr = createRect(size);
-draw();
-sort = bubbleSort(rectArr);
-sort.next();
+let time = 1, speed = 20, size;
+let rectArr = [], itl;
 
-setInterval(() => {
+window.addEventListener('load',()=>{
+    
+});
+
+document.querySelector('#build').addEventListener('click',()=>{
+    time = 1;
+    size = document.getElementById('length').value || 10;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    clearInterval(itl);
+    init();
+})
+// 开始按钮
+document.querySelector('#start').addEventListener('click',()=>{
+    start();
+});
+// 停止按钮
+document.querySelector('#stop').addEventListener('click',()=>{
+    time = 1;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    clearInterval(itl);
+    itl = null;
+});
+document.querySelector('#pause').addEventListener('click',()=>{
+    clearInterval(itl);
+});
+
+document.querySelector('#single').addEventListener('click',()=>{
+    single();
+});
+
+function single() {
     sort.next();
     time++;
-}, time * speed * 30)
+}
 
+function init() {
+    rectArr = createRect(size);
+    draw();
+
+}
+function start() {
+    sort = bubbleSort(rectArr);
+    sort.next();
+    itl = setInterval(() => {
+        sort.next();
+        time++;
+    }, time * speed * 30)
+}
+function restart() {
+    itl = setInterval(() => {
+        sort.next();
+        time++;
+    }, time * speed * 30)
+}
 function createRect(size) {
     const result = [];
     let width = canvas.width / size;
     for(let i = 0; i < size; i++) {
-        result.push(new Rect(i, size, width));
+        result.push(new Rect(i, width));
     }
     return result;
 }
 
-function Rect(i, size, width) {
+function Rect(i, width) {
     this.value = Math.floor(Math.random()*100);
     this.height = canvas.height * this.value / 100;
     this.width = width;
