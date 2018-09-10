@@ -1,3 +1,6 @@
+import bubbleSort from 'sort.js';
+
+
 const canvas = document.querySelector('#canvas');
 const context = canvas.getContext('2d');
 canvas.width = document.documentElement.clientWidth / 2;
@@ -83,16 +86,6 @@ function Rect(i, width) {
     this.x = i * width;
     this.y = canvas.height - this.height;
     this.color = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`
-}
-
-function* bubbleSort(array) {
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array.length - i - 1; j++) {
-            if(array[j].value > array[j+1].value) {
-                yield move(array,j,j+1);
-            }
-        }
-    }
 }
 
 function exchange(array,i,j) {           
