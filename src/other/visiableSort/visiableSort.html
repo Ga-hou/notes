@@ -34,8 +34,8 @@
                     </a>
                     <a href="#" class="list-group-item list-group-item-action">插入排序</a>
                     <a href="#" class="list-group-item list-group-item-action">选择排序</a>
-                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                    <a href="#" class="list-group-item list-group-item-action">归并排序</a>
+                    <a href="#" class="list-group-item list-group-item-action">快速排序</a>
                 </div>
                 <div class="mt-2">
                     <button class="btn btn-info btn-lg" id="build">生成</button>
@@ -45,18 +45,17 @@
                 </div>
                 <div class="mt-2">
                     <button class="btn btn-success btn-lg" id="single">单步开始</button>
-                    <button class="btn btn-danger btn-lg" id="stop">停止</button>
                 </div>
                 <form class="form-inline mt-2">
                     <div class="form-group">
                         <input type="text" name="" id="length" class="form-control" placeholder="数组长度(默认10)">
                     </div>
                 </form>
-                <select class="custom-select mt-2">
-                    <option selected value="">排序速度(默认)</option>
-                    <option value="1">慢</option>
-                    <option value="2">中</option>
-                    <option value="3">快</option>
+                <select class="custom-select mt-2" id="speed">
+                    <option selected value="20">排序速度(默认)</option>
+                    <option value="24">慢</option>
+                    <option value="16">中</option>
+                    <option value="10">快</option>
                 </select>
             </div>
             <div class="col-6">

@@ -4,14 +4,10 @@ canvas.width = document.documentElement.clientWidth / 2;
 canvas.height = document.documentElement.clientHeight / 2;
 
 
-let time = 1, speed = 20, size;
-let rectArr = [], itl;
+let time, speed = 20, size;
+let rectArr = [], itl, sort;
 
-window.addEventListener('load',()=>{
-    
-});
-
-document.querySelector('#build').addEventListener('click',()=>{
+$('#build').addEventListener('click',()=>{
     time = 1;
     size = document.getElementById('length').value || 10;
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -19,42 +15,52 @@ document.querySelector('#build').addEventListener('click',()=>{
     init();
 })
 // 开始按钮
-document.querySelector('#start').addEventListener('click',()=>{
+$('#start').addEventListener('click',()=>{
     start();
 });
-// 停止按钮
-document.querySelector('#stop').addEventListener('click',()=>{
-    time = 1;
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    clearInterval(itl);
-    itl = null;
-});
-document.querySelector('#pause').addEventListener('click',()=>{
-    clearInterval(itl);
+
+$('#pause').addEventListener('click',()=>{
+    pause();
 });
 
-document.querySelector('#single').addEventListener('click',()=>{
-    single();
-});
+// $('#single').addEventListener('click',()=>throttle(single,500));
+$('#single').onclick = throttle(single,500);
 
-function single() {
-    sort.next();
-    time++;
+$('#speed').addEventListener('change',()=>{
+    speed = $('#speed').value;
+})
+
+function $(selector) {
+    return document.querySelector(selector);
 }
 
+
+// 初始化
 function init() {
+    time = 1;
     rectArr = createRect(size);
     draw();
-
-}
-function start() {
     sort = bubbleSort(rectArr);
-    sort.next();
+}
+
+function start() {
     itl = setInterval(() => {
         sort.next();
         time++;
     }, time * speed * 30)
 }
+
+function pause() {
+    clearInterval(itl);
+    time = 1;
+}
+
+function single() {
+    pause();
+    sort.next();
+    time++;
+}
+
 function restart() {
     itl = setInterval(() => {
         sort.next();
@@ -119,3 +125,42 @@ function move(array,i,j) {
         }
     },speed);
 }
+
+// 节流处理
+function throttle(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+
+    var previous = 0;
+
+    if (!options) options = {};
+
+    var later = function () {
+        previous = options.leading === false ? 0 : Date.now();
+
+        timeout = null;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+    };
+    return function () {
+        var now = Date.now();
+        if (!previous && options.leading === false) previous = now;
+        var remaining = wait - (now - previous);
+        context = this;
+        args = arguments;
+
+        if (remaining <= 0 || remaining > wait) {
+            if (timeout) {
+                clearTimeout(timeout);
+                timeout = null;
+            }
+            previous = now;
+            result = func.apply(context, args);
+            if (!timeout) context = args = null;
+        }
+        else if (!timeout && options.trailing !== false) {
+            timeout = setTimeout(later, remaining);
+        }
+        return result;
+    };
+};
