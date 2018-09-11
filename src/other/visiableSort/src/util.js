@@ -1,6 +1,4 @@
-
-// 节流处理
-function throttle(func, wait, options) {
+export function throttle(func, wait, options) {
     var context, args, result;
     var timeout = null;
 

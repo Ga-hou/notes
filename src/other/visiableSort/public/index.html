@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>排序可视化</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active">
+                        冒泡排序
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">插入排序</a>
+                    <a href="#" class="list-group-item list-group-item-action">选择排序</a>
+                    <a href="#" class="list-group-item list-group-item-action">归并排序</a>
+                    <a href="#" class="list-group-item list-group-item-action">快速排序</a>
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-info btn-lg" id="build">生成</button>
+                    <button class="btn btn-primary btn-lg" id="start">开始</button>
+                    <button class="btn btn-warning btn-lg" id="pause">暂停</button>
+                    
+                </div>
+                <div class="mt-2">
+                    <button class="btn btn-success btn-lg" id="single">单步开始</button>
+                </div>
+                <form class="form-inline mt-2">
+                    <div class="form-group">
+                        <input type="text" name="" id="length" class="form-control" placeholder="数组长度(默认10)">
+                    </div>
+                </form>
+                <select class="custom-select mt-2" id="speed">
+                    <option selected value="20">排序速度(默认)</option>
+                    <option value="24">慢</option>
+                    <option value="16">中</option>
+                    <option value="10">快</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <h1>冒泡排序</h1>
+                <canvas id="canvas"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

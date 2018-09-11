@@ -1,28 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>排序可视化</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./src/bootstrap.min.css">
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        #root {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-flow: column nowrap;
-            justify-content: center;
-            align-items: center;
-        }
-        #canvas {
-            border: 1px solid #ccc;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
     <div class="container">
@@ -52,7 +34,7 @@
                     </div>
                 </form>
                 <select class="custom-select mt-2" id="speed">
-                    <option selected value="20">排序速度(默认)</option>
+                    <option selected="selected" value="20">排序速度(默认)</option>
                     <option value="24">慢</option>
                     <option value="16">中</option>
                     <option value="10">快</option>
@@ -64,6 +46,5 @@
             </div>
         </div>
     </div>
-    <script src="./src/index.js"></script>
-</body>
+<script type="text/javascript" src="bundle.js"></script></body>
 </html>
