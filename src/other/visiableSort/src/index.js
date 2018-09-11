@@ -46,7 +46,9 @@ function init() {
 }
 // 开始
 function start() {
+    
     state.itl = setInterval(() => {
+        console.log('hehe');
         state.sort.next();
         state.time++;
     }, state.time * state.speed * 30)
@@ -104,5 +106,19 @@ function* bubbleSort(array) {
                 yield move(array, j, j + 1);
             }
         }
+    }
+}
+
+function* insertSort(array) {
+    for(let i = 1; i < array.length; i++) {
+        let key = array[i].value;
+        for(let j = i-1; j >= 0; ) {
+            if(array[i].value < key) {
+                yield move(array,j+1,j);
+                j--;
+            }
+            console.log('123123')
+        }
+        array[i+1] = key;
     }
 }
