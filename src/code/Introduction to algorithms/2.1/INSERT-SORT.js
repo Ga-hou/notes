@@ -9,7 +9,3 @@ function insertSort(A) {
         A[j+1] = key;
     }
 }
-
-var A = [2,3,1,4,6,1,2,5,3,4];
-insertSort(A);
-console.log(A);
