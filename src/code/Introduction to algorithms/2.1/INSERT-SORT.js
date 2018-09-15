@@ -9,3 +9,17 @@ function insertSort(A) {
         A[j+1] = key;
     }
 }
+
+function createArr(size){
+    let arr = [];
+    for(let i = 0; i < size; i++){
+        arr[i] = Math.floor(Math.random()*100):
+    }
+    return arr;
+}
+
+let arr = [];
+arr = createArr(20);
+console.log(arr);
+insertSort(arr);
+console.log(arr);
